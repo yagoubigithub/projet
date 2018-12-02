@@ -1,0 +1,13 @@
+.card{
+    max-width: 600px;
+    
+}
+body{
+    background-color: #17a2b8;
+}
+.conatiner-card{
+   display: flex;
+   justify-content: center;
+   height: 100vh;
+   align-items: center;
+}

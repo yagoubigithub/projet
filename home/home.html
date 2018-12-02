@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="post/post.css">
+    <title>Document</title>
+</head>
+<body>
+        <header class="bg-warning">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm col-md-6"><h1>Logo</h1></div>
+                    <div class="col-sm col-md-6">
+                      
+                  </div>
+                </div>
+              </header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+           <h1>Hello world</h1>
+        </div>
+        <div class="col-sm-6" id="post_container">
+                <div id="create-post">
+                    
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                  <a class="nav-link active" id="pills-add-status-tab" data-toggle="pill" href="#pills-make-post" role="tab" aria-controls="pills-make-post" aria-selected="true">Make post</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="pills-photo-tab" data-toggle="pill" href="#pills-photo" role="tab" aria-controls="pills-photo" aria-selected="false">Photos</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="pills-file-tab" data-toggle="pill" href="#pills-file" role="tab" aria-controls="pills-file" aria-selected="false">Add file</a>
+                                </li>
+                              </ul>
+
+                              <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-make-post" role="tabpanel" aria-labelledby="pills-make-post-tab">
+                                    
+                                    
+                                    <textarea name="textarea-make-post" id="textarea-make-post"  rows="5" placeholder="Add comment"></textarea>
+
+
+                                    <button class="btn btn-primary">Post</button>
+
+
+
+
+                                </div>
+
+
+                                <div class="tab-pane fade" id="pills-photo" role="tabpanel" aria-labelledby="pills-photo-tab">
+                                    <div style="display:flex;align-items: center;  justify-content: center;">
+                                        <div class="card" style="width : 70%;padding:15px;border:0">
+                                          <h5 class="card-title">Upload images</h5>
+                                          <p>The images must be in jpg or png format</p>
+                                            <input type="file">
+                                            <br>
+                                            <button class="btn btn-primary">Post</button>
+                                        </div>
+                                        
+    
+                                      </div>
+
+                                </div>
+
+
+                                <div class="tab-pane fade" id="pills-file" role="tabpanel" aria-labelledby="pills-file-tab">
+                                  <div style="display:flex;align-items: center;  justify-content: center;">
+                                    <div class="card" style="width : 70%;padding:15px;border:0">
+                                      <h5 class="card-title">Upload file</h5>
+                                        <input type="file">
+                                        <br>
+                                        <button class="btn btn-primary">Post</button>
+                                    </div>
+                                    
+
+                                  </div>
+                                   
+
+                                </div>
+                              </div>
+                    </div>
+                
+            </div>
+            <div class="col-sm-3">
+                    <h1>Hello world</h1>
+                </div>
+
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="post/post.js"></script>
+<script>
+    for (let i = 0; i < 20; i++) {
+        
+        document.getElementById('post_container').innerHTML += returnPost();
+    }
+
+
+</script>
+
+</body>
+</html>

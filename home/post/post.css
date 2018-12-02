@@ -1,0 +1,90 @@
+.post-container {
+margin-bottom: 15px;
+padding: 5px;
+box-shadow: 0 0 15px gray;
+}
+.post_header, .post_footer {
+    display: flex;
+    flex-direction: row;
+  }
+  .post_header .post-profile-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+  }
+  .post_header .post-profile-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+  }
+  .post_header .post-dropdown {
+    display: flex;
+    align-items :flex-start;
+    margin: 0 0 0 auto;
+  }
+  .post_header .post-dropdown button {
+   
+    font-size: 50px;
+    padding:0;
+    line-height: 0;
+    background-color: transparent;
+    border: 0;
+    outline :0;
+    cursor: pointer;
+    margin: 2px;
+
+  }
+  .post_header h3, header h4 {
+    display: flex;
+    
+    margin: 0;
+  }
+  .post-inner p {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  .post-inner hr {
+    margin: 20px 0;
+    border-style: solid;
+    opacity: 0.1;
+  }
+  .post_footer .stats {
+    display: flex;
+    font-size: 15px;
+  }
+  .post_footer .stats strong {
+    font-size: 18px;
+  }
+  .post_footer .stats .likes {
+    margin-left: 10px;
+  }
+  .post_footer .cta {
+    margin-left: auto;
+  }
+  .post_footer .cta button {
+    border: 0;
+    background: transparent;
+  }
+  .comment{
+    display: flex;
+    flex-direction: row;
+    
+}
+.comment-container p{
+    font-size: 12px;
+}
+.comment-container{
+    background: #f2f2f2;
+    text-overflow: ellipsis;
+}
+.comment-name-and-comment-container{
+    padding : 2px;
+}
+
+.comments-container{
+    width: 100%;
+    overflow-x: auto;
+    height: 200px;
+    padding: 2px;
+}
