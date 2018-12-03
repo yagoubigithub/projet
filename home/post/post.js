@@ -71,6 +71,11 @@ var obj = {
 // post footer
     '<div class="post-footer">' + 
 
+
+   
+
+
+
     //add comment
     '<div style="display:flex">' + 
    
@@ -87,10 +92,12 @@ var obj = {
 
    '<hr>' + 
 
-   '<br>' + 
-    
+   
    // Comments section
     '<div class="comments-container">' + 
+
+    '<p><small class="text-muted">(2) Comments</small></p>'  +
+
 
     //First Comment
        '<div class="comment">' +

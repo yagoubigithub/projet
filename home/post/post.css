@@ -88,3 +88,6 @@ box-shadow: 0 0 15px gray;
     height: 200px;
     padding: 2px;
 }
+.btn-more-post{
+  box-shadow: 0 0 8px black;
+}

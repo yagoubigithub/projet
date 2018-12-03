@@ -1,0 +1,108 @@
+ <div class="card student-item-list">
+        <div class="list-item-image-profile-container">
+          <img
+            src="../image/user-male-image.jpg"
+            class="rounded-circle"
+            width="50"
+            height="50"
+          />
+        </div>
+        <div class="list-item-name-and-email-container" style="flex-grow: 8">
+          <h6>Hello word Student</h6>
+          <p><small>yagoubi.aek.2@gmail.com</small></p>
+        </div>
+        <div>
+          <div class="dropdown">
+            <button type="button" class="dropdown-btn" id="dddd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            >
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="dddd">
+                <button class="dropdown-item" >Action</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="card student-item-list">
+          <div class="list-item-image-profile-container">
+            <img
+              src="../image/user-male-image.jpg"
+              class="rounded-circle"
+              width="50"
+              height="50"
+            />
+          </div>
+          <div class="list-item-name-and-email-container" style="flex-grow: 8">
+            <h6>Hello word Student</h6>
+            <p><small>yagoubi.aek.2@gmail.com</small></p>
+          </div>
+          <div>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="dropdown-btn"
+                id="dddd"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </button>
+  
+              <div class="dropdown-menu" aria-labelledby="dddd">
+                  <button class="dropdown-item" >Action</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="card student-item-list">
+            <div class="list-item-image-profile-container">
+              <img
+                src="../image/user-male-image.jpg"
+                class="rounded-circle"
+                width="50"
+                height="50"
+              />
+            </div>
+            <div class="list-item-name-and-email-container" style="flex-grow: 8">
+              <h6>Hello word Student</h6>
+              <p><small>yagoubi.aek.2@gmail.com</small></p>
+            </div>
+            <div>
+              <div class="dropdown">
+                <button
+                  type="button"
+                  class="dropdown-btn"
+                  id="dddd"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+                </button>
+    
+                <div class="dropdown-menu" aria-labelledby="dddd">
+                  <button class="dropdown-item" >Action</button>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
