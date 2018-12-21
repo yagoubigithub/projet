@@ -1,0 +1,34 @@
+  if(obj.type_post === "text"){
+                    // content_post of the post
+                    post_model += '<div class="post-inner">' +
+                
+                '<p>' + obj.content_post +   '</p>'  ;
+            }else if(obj.type_post ==="image"){
+             /// post image
+            
+             post_model += '<div class="post-inner">' +
+                
+             '<p>' + obj.content_post +   '</p>'  + 
+             
+             '<img class="card-img-top" src="../images/' + obj.file_name_post  + '" alt="' + obj.file_name_upload_post + '">';
+            
+            }
+            else if(obj.type_post === "file"){
+              //post file
+              post_model += '<div class="post-inner">' +
+                
+             '<p>' + obj.content_post +   '</p>'  + 
+             
+             '<a target="_blank" class="file_link"  href="../files/' + obj.file_name_post  + '" >' + obj.file_name_upload_post + '</a><br>';
+            
+            }
+            
+                // date_post of the post
+                post_model +=    '<div><span class="inner-post-date">' +  obj.date_post  + '</span> </div>' +
+                
+            
+                // fin inner post
+                '</div>' + 
+               
+            
+                ' </div>';

@@ -1,14 +1,17 @@
-function returnStudentItem (){
-    var obj = {
-        "id_Student" : 1,
-        "imageURLStudent" : "https://picsum.photos/50",
-        "first_name" : "Abdou",
-        "last_name" : "Yagoubi",
-        "email" :"yagoubi.aek.2@gmail.com",
-        dropdown_btn_id : 2
+function returnStudentItem (obj){
+    let theme = '';
+    let span_error = '';
+    let blocked_btn = '<button class="dropdown-item"  onclick="suprimerUser(' + obj.id  + ')" >Blocker</button>' ;
+    if(obj.blocked !== "no"){
+      theme = 'bg-dark text-white';
+      span_error = '<span style="color: red">Blocked</span>';
+      blocked_btn = '<button class="dropdown-item" onclick="deblockerUser(event,' + obj.id  + ')" >DeBlocker</button>' ;
+
     }
 
-    const item = '<div class="card student-item-list">'  +
+    const item = '<div class="card student-item-list '  +
+
+    theme + '">' + 
 
 
     //image profile container
@@ -17,7 +20,7 @@ function returnStudentItem (){
     //image profile
     ' <img class="rounded-circle" width="50" height="50" ' + 
 
-    'src="'+obj.imageURLStudent+'" />' + 
+    'src="../images/'+obj.image+'" />' + 
 
 
 
@@ -29,8 +32,10 @@ function returnStudentItem (){
     //container of name and email
     ' <div class="list-item-name-and-email-container" style="flex-grow: 8">' + 
 
-    '<h6>' + obj.first_name +' '+ obj.last_name+ '</h6>' + 
+    '<h6>' + obj.firstname +' '+ obj.lastname+ '</h6>' + 
   '<p><small>' + obj.email + '</small></p>' +
+
+  span_error + 
 
 
     //fin container of name and email
@@ -47,7 +52,7 @@ function returnStudentItem (){
 
 
   //dropdown button
- '<button type="button" class="dropdown-btn" id="' + obj.id_Student  +'"' +
+ '<button type="button" class="dropdown-btn" id="' + obj.id  +'"' +
  
  'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
  ' <div class="bar"></div>' +
@@ -59,14 +64,14 @@ function returnStudentItem (){
 
 
  //dropdown menu
-' <div class="dropdown-menu" aria-labelledby="' + obj.id_Student  + '">' +
+' <div class="dropdown-menu" aria-labelledby="' + obj.id  + '">' +
 
 //item 1 : blocker student  
-'<button class="dropdown-item" >Blocker</button>' + 
+blocked_btn + 
 
 
 //item 2 : send mail to student  
-'<button class="dropdown-item" >Send mail</button>' + 
+'<button class="dropdown-item"   data-toggle="modal" data-target="#sendEmialModel" >Send mail</button>' + 
 
 
  //fin dropdown menu

@@ -9,8 +9,53 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container" id="students_list">
-     <h1>List Students</h1>
+      <header class="bg-primary fixed-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm col-md-6"><h1 class="text-white">Logo</h1></div>
+              <div class="col-sm col-md-6">
+                <a href="#"><button type="button" class="btn  m-2">List des Etudiant</button></a>
+                <a href="../home/home.html"><button type="button" class="btn  m-2">Accuil</button></a>
+                <button type="button" class="btn  m-2">Profile</button>
+
+                
+            </div>
+          </div>
+        </header>
+            <!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Send Email</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+         <form>
+           <input type="text" class="form-control mb-2" placeholder="Objet">
+           <textarea  class="form-control mb-2" placeholder="message"></textarea>
+           <button type="button" class="btn btn-primary " >Envoyer</button>
+  
+  
+         </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+    <div class="container" style="padding-top : 100px;" id="students_list">
+        <!-- List -->
+
+ 
     </div>
 
     <script

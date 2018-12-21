@@ -15,6 +15,6 @@
 }
 
 .comments-container{
-    width: 500px;
+    max-width: 500px;
     overflow-x: auto;
 }

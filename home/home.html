@@ -4,28 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../list_student/list_student.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="post/post.css">
     <title>Document</title>
 </head>
 <body>
-        <header class="bg-warning">
+  <!--password model -->
+    <div class="modal fade bd-example-modal-sm" id="password_model" tabindex="-1" role="dialog" aria-labelledby="password_model" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4>Mot de passe</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row" style="padding: 15px;">
+                        <label for="inputPassword" class="col-form-label">Entrer Votre Mot de passe</label>
+                       
+                          <input type="password" class="form-control" id="inputPassword" placeholder="Entrer Mot de passe">
+                       
+                      </div>
+                  </div>
+
+                  <div class="modal-footer">
+
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" onclick="SubmitTheChange()">Save changes</button>
+                  </div>
+          </div>
+        </div>
+      </div>
+
+
+           <!-- The Modal -->
+<div class="modal" id="sendEmialModel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Send Email</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+         <form>
+           <input type="text" class="form-control mb-2" placeholder="Objet">
+           <textarea  class="form-control mb-2" placeholder="message"></textarea>
+           <button type="button" class="btn btn-primary " >Envoyer</button>
+  
+  
+         </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            
+            <div class="modal-body" id="model_content">
+             
+            </div>
+           
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="suprimerUser_model" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="suprimerUser_model_content">
+              
+              <div class="modal-body" >
+               
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+        <header class="bg-primary">
+          <input type="hidden" id="user_id">
                 <div class="container">
                   <div class="row">
-                    <div class="col-sm col-md-6"><h1>Logo</h1></div>
-                    <div class="col-sm col-md-6">
-                      
+                    <div class="col-sm col-md-4"><h1 class="text-white">Logo</h1></div>
+                    <div class="col-sm col-md-8">
+                      <button type="button" onclick="showListStudents()" class="btn  m-2">List des Etudiant</button>
+                      <button type="button" onclick="location.reload()" class="btn  m-2">Accuil</button>
+                      <button type="button" onclick="showProfile()" class="btn  m-2">Profile</button>
+                     
+                      <div class="dropdown">
+                          <a class="btn btn-secondary " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  onclick="clearNotification()">
+                              <i class="far fa-bell fa-lg"></i> <span class="badge badge-danger" id="badge_notification"></span>
+                          </a>
+                        
+                          <div class="dropdown-menu" id="container_notification" aria-labelledby="dropdownMenuLink">
+
+                            
+
+                           
+                          </div>
+                        </div>
                   </div>
                 </div>
               </header>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-3">
-           <h1>Hello world</h1>
+        <div class="col-sm-3 d-none d-sm-block">
+            <div class="card  mt-3 " >
+              <img src="#"class="card-img-top" id="profile_card_image" alt="image profile" />
+              <div class="card-body">
+                
+                <h5 id="profile_card_firstname_lastname" class="card-title"></h5>
+                <p id="profile_card_email" class="card-text"></p>
+              </div>
+            </div>
+           
         </div>
-        <div class="col-sm-6" >
+        <div class="col-sm-7" >
                 <div id="create-post">
                     
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -47,7 +160,7 @@
                                     <textarea name="textarea-make-post" id="textarea-make-post"  rows="5" placeholder="Add comment"></textarea>
 
 
-                                    <button class="btn btn-primary">Post</button>
+                                    <button class="btn btn-primary" id="add_text_post_btn">Post</button>
 
 
 
@@ -56,14 +169,17 @@
 
 
                                 <div class="tab-pane fade" id="pills-photo" role="tabpanel" aria-labelledby="pills-photo-tab">
-                                    <div style="display:flex;align-items: center;  justify-content: center;">
-                                        <div class="card" style="width : 70%;padding:15px;border:0">
-                                          <h5 class="card-title">Upload images</h5>
-                                          <p>The images must be in jpg or png format</p>
-                                            <input type="file">
+                                    <div>
+                                       
+                                          
+                                          <form id="upload_image_form" style="box-shadow:inset  0 0 5px gray;padding-left :5px">
+                                              <textarea name="textarea-make-image-post" rows="5" 
+                                              id="textarea-make-image-post"style="outline-color: green;width : 100%;padding:5px;resize: none;border : 0;background-color: transparent"  placeholder="Add comment" ></textarea>
+                                            <input name="upload_image" type="file">
                                             <br>
-                                            <button class="btn btn-primary">Post</button>
-                                        </div>
+                                            <button  class="btn btn-primary">Post</button>
+                                          </form>
+                                            
                                         
     
                                       </div>
@@ -72,16 +188,13 @@
 
 
                                 <div class="tab-pane fade" id="pills-file" role="tabpanel" aria-labelledby="pills-file-tab">
-                                  <div style="display:flex;align-items: center;  justify-content: center;">
-                                    <div class="card" style="width : 70%;padding:15px;border:0">
-                                      <h5 class="card-title">Upload file</h5>
-                                        <input type="file">
-                                        <br>
-                                        <button class="btn btn-primary">Post</button>
-                                    </div>
-                                    
-
-                                  </div>
+                                    <form id="upload_file_form" style="box-shadow:inset  0 0 5px gray;padding-left :5px">
+                                        <textarea name="textarea-make-file-post" rows="5" 
+                                        id="textarea-make-file-post"style="outline-color: green;width : 100%;padding:5px;resize: none;border : 0;background-color: transparent"  placeholder="Add comment" ></textarea>
+                                      <input name="upload_file" type="file">
+                                      <br>
+                                      <button  class="btn btn-primary">Post</button>
+                                    </form>
                                    
 
                                 </div>
@@ -96,30 +209,18 @@
                     <br>
                 
             </div>
-            <div class="col-sm-3">
-                    <h1>Hello world</h1>
-                </div>
+           
 
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="../list_student/list_student.js"></script>
 <script src="post/post.js"></script>
-<script>
-    for (let i = 0; i < 5; i++) {
-        
-        document.getElementById('post_container').innerHTML += returnPost();
-    }
-    document.getElementById('more_comment_btn').addEventListener("click",function(){
-      for (let i = 0; i < 2; i++) {
-        
-        document.getElementById('post_container').innerHTML += returnPost();
-    }
-    })
+<script src="./post/profile.js"></script>
+<script src="home.js"></script>
 
-
-</script>
 
 </body>
 </html>

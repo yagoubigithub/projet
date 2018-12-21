@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./front_page.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./front_page/front_page.css">
     <title>Document</title>
   </head>
   <body>
@@ -18,9 +18,9 @@
               <form class="form-inline">
                   
                     
-                            <input type="text" class="form-control form-control-sm mr-2" placeholder="Email" />
-                            <input type="password" class="form-control form-control-sm mr-2" placeholder="password" />
-                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                            <input type="text" value="yagoubi.aek.2@gmail.com" id="login_email_input" class="form-control form-control-sm mr-2" placeholder="Email" />
+                            <input type="password" value="yagoubi10" id="login_password_input" class="form-control form-control-sm mr-2" placeholder="password" />
+                            <button type="button" onclick="connexion()" class="btn btn-primary btn-sm">connexion</button>
               </form>
             </div>
           </div>
@@ -35,33 +35,45 @@
 
         </div>
         <div class="col-sm-6">
-                <form>
+                <form id="Inscription_form"  enctype="multipart/form-data">
                     <h2>Inscription  </h2>
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="first_name">First Name</label>
-                            <input type="text" class="form-control" id="first_name" placeholder="First Name">
+                            <label for="first_name"> Nom*</label>
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nom" required>
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="last_name">Last Name</label>
-                            <input type="password" class="form-control" id="last_name" placeholder="Last Name">
+                            <label for="last_name">Prenom*</label>
+                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Prenom" required>
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="text" class="form-control" id="email" placeholder="Email">
+                          <label for="email">Email*</label>
+                          <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                          <label for="password">Mot de passe</label>
-                          <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                          <label for="password">Mot de passe*</label>
+                          <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
                         </div>
+                        <div class="form-group">
+                            <label for="co_password">Confirmer Mot de passe*</label>
+                            <input type="password" class="form-control" name="co_password" id="co_password" placeholder="Mot de passe" required>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="image">Image profile</label>
+                              <input type="file" name="image" class="form-control" id="image" name="image" placeholder="image profile" >
+                            </div>
                         
                         
-                        <button type="submit" class="btn btn-success">Inscription</button>
+                        <button type="submit" id="Inscription_btn" class="btn btn-success">Inscription</button>
                       </form>   
             </div>
     </div>
 </div>
-   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+<script src="./front_page/front_page.js"></script>
   </body>
 </html>
