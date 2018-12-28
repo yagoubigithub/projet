@@ -54,7 +54,10 @@ function postAPI_select_posts($number_of_groupe){
         global $handle;
         $n_number_of_groupe = (int)$number_of_groupe;
        
-        $query = sprintf("SELECT tab2.id id_post,tab2.type  type_post,tab2.content content_post,tab2.id_user id_user_post,tab2.date date_post,u.firstname firstname_post,u.lastname lastname_post,u.image image_user_post,tab2.file_name file_name_post, file_name_upload file_name_upload_post FROM(SELECT * FROM
+        $query = sprintf("SELECT tab2.id id_post,tab2.type  type_post,tab2.content content_post,
+        tab2.id_user id_user_post,tab2.date date_post,u.firstname firstname_post,
+        u.lastname lastname_post,u.image image_user_post,tab2.file_name file_name_post,
+         file_name_upload file_name_upload_post,u.isadmin isadmin_post FROM(SELECT * FROM
         (SELECT * FROM `posts` p
         ORDER BY p.id DESC
         LIMIT %d ) tab1 

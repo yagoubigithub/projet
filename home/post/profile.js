@@ -43,15 +43,14 @@ function showProfile() {
   $("#more_comment_btn").css({ display: "none" });
   $("#create-post").css({ display: "none" });
   is_list_students = false;
-$("#save_the_change_change_profile").click(function(){
-    $("#password_model").modal('show');
-
-});
+  $("#save_the_change_change_profile").click(function() {
+    $("#password_model").modal("show");
+  });
 
   $("#change_profile_form").on("submit", function(e) {
     e.preventDefault();
     $.ajax({
-      url: "../php/controller/change_profile.php",
+      url: "./php/controller/change_profile.php",
       type: "POST",
       data: new FormData(this),
       contentType: false,
@@ -65,11 +64,28 @@ $("#save_the_change_change_profile").click(function(){
       },
       success: function(data) {
         if (data) {
-            console.log(data);
+          //update new user
+          $.get("./php/controller/getUserInformationSession.php", function(
+            userSession
+          ) {
+            console.log(user);
+            //intilal work
+            user = JSON.parse(userSession);
+            userId = user.id;
+            isAdmin = user.isadmin;
+
+            $("#profile_card_image").attr("src", "../images/" + user.image);
+            $("#profile_card_firstname_lastname").html(
+              user.firstname.toUpperCase() + " " + user.lastname.toUpperCase()
+            );
+            $("#profile_card_email").html(user.email);
+            $("#user_id").val(user.id);
+          });
+          console.log(data);
         }
       },
       error: function(error) {
-        console.log( error);
+        console.log(error);
       }
     });
   });
@@ -77,17 +93,16 @@ $("#save_the_change_change_profile").click(function(){
 
 /********************************************************************************************* */
 
-function SubmitTheChange(){
-
-  const password =   $("#inputPassword").val();
-  $.get("../php/controller/check_password.php",{password : password},function(data){
-   if(data){
-    $("#password_model").modal('hide');
-    $("#change_profile_form").submit();
-   }
-
-});
+function SubmitTheChange() {
+  const password = $("#inputPassword").val();
+  $.get(
+    "./php/controller/check_password.php",
+    { password: password },
+    function(data) {
+      if (data) {
+        $("#password_model").modal("hide");
+        $("#change_profile_form").submit();
+      }
+    }
+  );
 }
-
-
-

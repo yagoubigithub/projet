@@ -4,17 +4,17 @@ function returnPost(obj ){
     
     '<div class="post_header">' + 
     // image profile
-    '<img src ="../images/'  + obj.image_user_post  + '"  class="post-profile-thumbnail"' + 
+    '<img src ="./images/'  + obj.image_user_post  + '"  class="post-profile-thumbnail"' + 
          'alt = "' + obj.firstname_post + '" />' + 
     
          '<div class="post-profile-name">' + 
     // first Name && last Name
 
-    '<h3>' + obj.firstname_post + '</h3>' + 
-    '<h4> ' + obj.lastname_post +'</h4>' +
+    '<h5>' + obj.firstname_post.toUpperCase() + ' ' + obj.lastname_post.toUpperCase() +'</h5>' + 
+   
     
     '</div>' ;
-   if(isAdmin  === 'yes'){
+   if(user.isadmin  === 'yes'){
        post +=  //dropdown post
        '<div class="post-dropdown">' + 
    
@@ -23,10 +23,14 @@ function returnPost(obj ){
        '<button  type="button" id="drop' + obj.id_post + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + 
        '... </button>'+
    
-       ' <div class="dropdown-menu" aria-labelledby="drop'+ obj.id_post + '">' + 
-   
-    ' <a class="dropdown-item" onclick="suprimerUser('+ obj.id_user_post + ')" href="#">Bloquer Utilisateur</a>' +
-    ' <a class="dropdown-item" href="#" onclick="suprimerPost(event,'+ obj.id_post + ')">Suprimer Post</a>' +
+       ' <div class="dropdown-menu" aria-labelledby="drop'+ obj.id_post + '">' ;
+       if(obj.id_user_post !== user.id){
+           
+        post += ' <a class="dropdown-item" onclick="suprimerUser('+ obj.id_user_post + ')" href="#">Bloquer Utilisateur</a>' ;
+       }
+       
+
+    post +=' <a class="dropdown-item" href="#" onclick="suprimerPost(event,'+ obj.id_post + ')">Suprimer Post</a>' +
    
        // fin dropdown-menu
        '</div>' + 
@@ -47,27 +51,30 @@ function returnPost(obj ){
     // fin header
    post+= '</div>' ;
    if(obj.type_post === "text"){
+       const content = JSON.parse( obj.content_post);
+       
         // content_post of the post
     post += '<div class="post-inner">' +
     
-    '<p>' + obj.content_post +   '</p>'  ;
+     quillGetHTML(content)  ;
 }else if(obj.type_post ==="image"){
  /// post image
-
+ const content = JSON.parse( obj.content_post);
  post += '<div class="post-inner">' +
     
- '<p>' + obj.content_post +   '</p>'  + 
+ quillGetHTML(content)  + 
  
- '<img class="card-img-top" src="../images/' + obj.file_name_post  + '" alt="' + obj.file_name_upload_post + '">';
+ '<img class="card-img-top" src="./images/' + obj.file_name_post  + '" alt="' + obj.file_name_upload_post + '">';
 
 }
 else if(obj.type_post === "file"){
   //post file
+  const content = JSON.parse( obj.content_post);
   post += '<div class="post-inner">' +
     
- '<p>' + obj.content_post +   '</p>'  + 
+  quillGetHTML(content)  + 
  
- '<a target="_blank" class="file_link"  href="../files/' + obj.file_name_post  + '" >' + obj.file_name_upload_post + '</a><br>';
+ '<a target="_blank" class="file_link"  href="./files/' + obj.file_name_post  + '" >' + obj.file_name_upload_post + '</a><br>';
 
 }
   
@@ -88,7 +95,7 @@ else if(obj.type_post === "file"){
     //add comment
     '<div style="display:flex">' + 
    
-    '<img src="../images/'+user.image+'" class="rounded-circle" width="45" height="45" >' + 
+    '<img src="./images/'+user.image+'" class="rounded-circle" width="45" height="45" >' + 
     '<input onkeyup="addComment(event,'+obj.id_post+')" placeholder="Add comment" class="form-control" />' + 
 
 
@@ -132,25 +139,40 @@ else if(obj.type_post === "file"){
 
 
 function showComments(postId){
-    $.get("../php/controller/getComments.php",{id_post  : postId} ,
+    $.get("./php/controller/getComments.php",{id_post  : postId} ,
     function(data){
         let comments = "";
         const obj = JSON.parse(data);
         
         if(obj){
             obj.forEach(comment => {
+                let textAlign = '';
+                let display = '';
+                let borderRaduis ="";
+                
+                let flexDirection ='style ="flex-direction: row;"';
+                let float = '';
+                console.log(comment.id_user_comment);
+                if(comment.id_user_comment === user.id){
+                    display ='style ="opacity: 0;"';
+                    flexDirection ='style ="flex-direction: row-reverse;"';
+                    textAlign = 'style="text-align:right"';
+                    float = 'floatRight';
+                    borderRaduis = 'style  ="border-radius: 10px 0 10px 10px;" ';
+
+                }
                 comments += ''  +
     
     
                 //First Comment
-                   '<div class="comment">' +
+                   '<div class="comment" ' + flexDirection +'>' +
             
             
                    //image profile of comment
                    '<div class="comment-image-profile-container">' + 
             
             
-                   ' <img src="../images/'+comment.image+'" class="rounded-circle" width="30" height="30" />' + 
+                   ' <img src="./images/'+comment.image+'" class="rounded-circle" width="30" height="30" />' + 
             
             
                    //fin image profile of comment
@@ -159,13 +181,13 @@ function showComments(postId){
                     //name and comment container
                     '<div class="comment-name-and-comment-container">' +
             
-                    '<div class="comment-name-conatiner"><h5>'+ comment.firstname+ " " + comment.lastname+'</h5></div>' +
+                    '<div class="comment-name-conatiner"'+ display + '><h6 '+textAlign+'><small>'+ comment.firstname.toUpperCase()+ " " + comment.lastname.toUpperCase()+'</small></h6></div>' +
             
                     //Comment container
             
-                    '<div class="comment-container">' + 
+                    '<div class="comment-container ' + float + '"  ' +borderRaduis+ '>' + 
             
-                    '<p>'+ comment.content_comment + '</p>' +
+                    '<span>'+ comment.content_comment + '</span>' +
             
             
                     '</div>' +
@@ -199,7 +221,7 @@ function addComment(event,id_post){
     {
         const comment = event.target.value;
         event.target.value = "";
-        $.get("../php/controller/addComment.php",{comment : comment,id_post : id_post},function(data){
+        $.get("./php/controller/addComment.php",{comment : comment,id_post : id_post},function(data){
            
            $("#comments_"+id_post).addClass("show");
             showComments(id_post);
@@ -212,7 +234,7 @@ function addComment(event,id_post){
 }
 
 function showNotification(compare_date){
-    $.get("../php/controller/showNewPost.php",{compare_date : compare_date},function(data){
+    $.get("./php/controller/showNewPost.php",{compare_date : compare_date},function(data){
         const obj =  JSON.parse(data);
         if(obj !== null){
             if(obj.length !== 0){
@@ -245,7 +267,7 @@ function clearNotification(){
 }
 
 function showPostContent(id_post){
-    $.get("../php/controller/Select_post_By_id.php",{id_post : id_post},function(data){
+    $.get("./php/controller/Select_post_By_id.php",{id_post : id_post},function(data){
         const post = JSON.parse(data);
         if(post !== null){
             post.forEach(obj => { 
@@ -265,7 +287,7 @@ function showPostContent(id_post){
 function suprimerUser(id_user){
     
 
-    $.get("../php/controller/Select_users_information_by_id.php",{id_user : id_user},function(data){
+    $.get("./php/controller/Select_users_information_by_id.php",{id_user : id_user},function(data){
        //show model confirmation of delete user
        const obj = JSON.parse(data);
        if(obj){
@@ -297,7 +319,7 @@ function suprimerUser(id_user){
 
 
 function deleteUser(id_user){
-    $.get("../php/controller/delete_user.php",{id_user : id_user},function(data){
+    $.get("./php/controller/delete_user.php",{id_user : id_user},function(data){
         if(data){
             alert("utilistateur blocker");
             if(is_list_students){
@@ -312,7 +334,7 @@ function deleteUser(id_user){
 
 function suprimerPost(event,id_post){
     event.preventDefault();
-    $.get("../php/controller/suprimer_Post.php",{id_post : id_post},function(data){
+    $.get("./php/controller/suprimer_Post.php",{id_post : id_post},function(data){
         if(data){
            $("#post_container" + id_post).hide(500);
         }else{
@@ -324,7 +346,7 @@ function suprimerPost(event,id_post){
 }
 
 function showListStudents(){
-    $.get("../php/controller/Select_All_Users.php",function(data){
+    $.get("./php/controller/Select_All_Users.php",function(data){
         if(data){
             const obj = JSON.parse(data);
             if(obj.length !== 0){
@@ -350,7 +372,7 @@ function showListStudents(){
 
 function deblockerUser(event ,id_user){
     event.preventDefault();
-    $.get("../php/controller/deblockerUser.php",{id_user : id_user},function(data){
+    $.get("./php/controller/deblockerUser.php",{id_user : id_user},function(data){
         if(data){
             showListStudents();
           

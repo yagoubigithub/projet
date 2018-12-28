@@ -61,6 +61,16 @@ if($_FILES['change_profile_image_input']['error'] === 0){
 
 $id_user = $_SESSION['id'];
 $is_update  = update_user_by_id($id_user,$firstname,$lastname,$email,$password,$file_name_new);
+
+   
+$user=false;
+$user = select_User_By_id($id_user);
+$_SESSION['id'] = $user['id'];
+$_SESSION['firstname'] = $user['firstname'];
+$_SESSION['lastname'] = $user['lastname'];
+$_SESSION['email'] = $user['email'];
+$_SESSION['image'] = $user['image'];
+$_SESSION['isadmin'] = $user['isadmin'];
 echo $is_update;
 
 

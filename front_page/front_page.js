@@ -28,8 +28,8 @@ function connexion() {
 //
 
 function login(userData){
-  console.log(userData);
-    window.location = "home/home.html";
+  
+    location.reload();
 }
 
 $(document).ready(function(){
@@ -75,7 +75,19 @@ $(document).ready(function(){
       },
       success: function(data) {
         if (data) {
-            //go to confirm email
+          console.log(data);
+           const obj =JSON.parse(data);
+          if(obj){
+           alert(obj.random);
+           
+            $.get("./php/controller/login_2.php",{email : obj.email,password :obj.password},function(data){
+          
+              window.location = "./confirmer_email/confirmer_email.html";
+      
+          });
+              
+          } 
+        
         }
       },
       error: function(error) {

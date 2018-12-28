@@ -1,4 +1,7 @@
 function returnStudentItem (obj){
+  if(obj.suprimed  === "yes"){
+    return '';
+  }
     let theme = '';
     let span_error = '';
     let blocked_btn = '<button class="dropdown-item"  onclick="suprimerUser(' + obj.id  + ')" >Blocker</button>' ;

@@ -2,7 +2,7 @@
 require_once('../model/postAPI.php');
 
 session_start();
-if(isset($_FILES['upload_file']) && isset($_SESSION['id']) && isset($_POST['textarea-make-file-post'])){
+if(isset($_FILES['upload_file']) && isset($_SESSION['id']) && isset($_POST['textarea_make_file_post'])){
     $file  = $_FILES['upload_file'];
    
     $file_name =$file['name'];
@@ -10,7 +10,7 @@ if(isset($_FILES['upload_file']) && isset($_SESSION['id']) && isset($_POST['text
     $file_size = $file['size'];
     $file_error = $file['error'];
    
-    $text = $_POST['textarea-make-file-post'];
+    $text = $_POST['textarea_make_file_post'];
 
     //Work out the file extension
 

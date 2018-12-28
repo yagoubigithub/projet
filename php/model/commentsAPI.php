@@ -6,7 +6,8 @@ function commentsAPI_select_comments_by_postId($id_post,$number_group_comment){
         $n_id_post = (int)$id_post;
         $n_number_group_comment = (int)$number_group_comment;
        
-        $query = sprintf("SELECT c.id id_comment,c.comment content_comment,c.date date_comment,u.firstname ,u.lastname, u.image 
+        $query = sprintf("SELECT c.id id_comment,c.comment content_comment,c.date date_comment,u.firstname ,
+        u.lastname, u.image,u.id id_user_comment
         FROM `comments` c
         JOIN users u
         ON c.id_user = u.id AND c.id_post = %d

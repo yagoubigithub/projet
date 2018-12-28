@@ -1,16 +1,19 @@
 .post-container {
-margin-bottom: 15px;
-padding: 5px;
-box-shadow: 0 0 15px gray;
+margin-bottom: 20px;
+
+
 }
+
 .post_header, .post_footer {
     display: flex;
     flex-direction: row;
+   
   }
   .post_header .post-profile-thumbnail {
     width: 50px;
     height: 50px;
-    border-radius: 4px;
+    border-radius: 100%;
+    margin :5px;
   }
   .post_header .post-profile-name {
     display: flex;
@@ -21,7 +24,8 @@ box-shadow: 0 0 15px gray;
   .post_header .post-dropdown {
     display: flex;
     align-items :flex-start;
-    margin: 0 0 0 auto;
+    margin: 0  17px 0 auto;
+   
   }
   .post_header .post-dropdown button {
    
@@ -32,17 +36,29 @@ box-shadow: 0 0 15px gray;
     border: 0;
     outline :0;
     cursor: pointer;
-    margin: 2px;
+    
+    font-weight: 500;
+    color:rgba(0,0,0,0.7);
 
   }
-  .post_header h3, header h4 {
+  .post_header h5 {
     display: flex;
-    
+    font-weight: 700;
+    color: midnightblue;
     margin: 0;
   }
+  .post-inner{
+    padding : 5px;
+  }
+  .post-inner img{
+    max-width: 100% !important;
+  }
+  .ql-align-right{
+    text-align: right;
+  }
   .post-inner p {
-    margin-bottom: 10px;
-    font-size: 20px;
+    margin :0;
+    padding :0;
   }
   .post-inner hr {
     margin: 20px 0;
@@ -71,15 +87,29 @@ box-shadow: 0 0 15px gray;
     flex-direction: row;
     
 }
-.comment-container p{
-    font-size: 12px;
+.floatRight {
+  float: right !important;
+  clear: right !important;
 }
-.comment-container{
-    background: #f2f2f2;
-    text-overflow: ellipsis;
+
+.comment-container {
+  max-width:50%;
+  
+  width :auto;
+  background: #007bff;
+  padding:2px;
+  margin:3px;
+  border-radius: 0 10px 10px 10px; 
+ 
+  float:  left;
+  clear: left;
+  color: white;
 }
+
 .comment-name-and-comment-container{
     padding : 2px;
+    display: block;
+    width: 100%;
 }
 
 .comments-container{

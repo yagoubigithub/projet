@@ -12,7 +12,7 @@ function select_User_By_email_password($email , $password){
 
     if (!filter_var($n_email, FILTER_VALIDATE_EMAIL))
         return null;
-        $query = sprintf("SELECT `id`, `firstname`,`lastname`,`email`,`image`,`isadmin`, `blocked` 
+        $query = sprintf("SELECT `id`, `firstname`,`lastname`,`email`,`image`,`isadmin`, `blocked` ,`suprimed`
         FROM `users` u
         WHERE `email` = '%s' AND `password` = '%s'", $n_email,$n_password);
 
@@ -137,16 +137,14 @@ function deblocker_user_by_id($id_user ){
  $query_result = mysqli_query($handle, $query);
  
      if (!$query_result)
-         return null;
+         return false;
  
-     $user = null;
-     $user = mysqli_fetch_assoc($query_result);
+    
  
- 
-     return $user;
+     return true;
     }catch(Exepetion $ex){
      error_log($ex->getMessage());
-        return null;
+        return false;
     }
  
      
@@ -160,7 +158,7 @@ function update_user_by_id($id_user ,$firstname,$lastname,$email,$password,$imag
     try {
      global $handle;
      if (empty($email) || empty($firstname) || empty($lastname))
-     return null;
+     return false;
      $n_id_user = (int)$id_user;
      $n_firstname = mysqli_real_escape_string($handle, strip_tags($firstname));
      $n_lastname = mysqli_real_escape_string($handle, strip_tags($lastname));
@@ -172,7 +170,7 @@ function update_user_by_id($id_user ,$firstname,$lastname,$email,$password,$imag
  
 
  if (!filter_var($n_email, FILTER_VALIDATE_EMAIL))
-     return null;
+     return false;
 
      $query = sprintf("UPDATE users SET `firstname`='%s',`lastname`='%s',`email`='%s',`password`='%s',
         `image`='%s' WHERE `id`=%d",$n_firstname,$n_lastname,$n_email,$n_password,$n_image, $n_id_user);
@@ -197,13 +195,15 @@ function update_user_by_id($id_user ,$firstname,$lastname,$email,$password,$imag
  $query_result = mysqli_query($handle, $query);
 
      if (!$query_result)
-         return $query;
+         return false;
+
+     return true;    
   
  
      return $query_result;
     }catch(Exepetion $ex){
      error_log($ex->getMessage());
-        return null;
+        return false;
     }
  
       
@@ -244,7 +244,7 @@ function add_user($firstname,$lastname,$email,$password,$image){
      global $handle;
      if (empty($email) || empty($firstname) || empty($lastname) || empty($password)
       || empty($image))
-     return null;
+     return "emty";
     
      $n_firstname = mysqli_real_escape_string($handle, strip_tags($firstname));
      $n_lastname = mysqli_real_escape_string($handle, strip_tags($lastname));
@@ -258,8 +258,9 @@ function add_user($firstname,$lastname,$email,$password,$image){
  if (!filter_var($n_email, FILTER_VALIDATE_EMAIL))
      return null;
 
-     $query = sprintf("INSERT INTO  `users` (`firstname`,`lastname`,`email`,`password`,`image`,`isadmin`,`blocked`) 
-     VALUES ('%s','%s','%s','%s','%s','no','yes')
+     $query = sprintf("INSERT INTO  `users` (`firstname`,`lastname`,`email`,
+     `password`,`image`,`isadmin`,`blocked`,`suprimed`) 
+     VALUES ('%s','%s','%s','%s','%s','no','yes','yes')
        ",$n_firstname,$n_lastname,$n_email,$n_password,$n_image);
 
     
@@ -274,10 +275,37 @@ function add_user($firstname,$lastname,$email,$password,$image){
      return $query_result;
     }catch(Exepetion $ex){
      error_log($ex->getMessage());
-        return null;
+        return $ex->getMessage();
     }
  
       
 }
+
+
+function desuprimer_user_by_id($id_user ){
+   
+    try {
+     global $handle;
+     $n_id_user = (int)$id_user;
+         $query = sprintf("UPDATE users SET suprimed='no' WHERE id=%d", $n_id_user);
+ 
+ 
+ $query_result = mysqli_query($handle, $query);
+ 
+     if (!$query_result)
+         return false;
+ return true;
+    
+ 
+ 
+    
+    }catch(Exepetion $ex){
+     error_log($ex->getMessage());
+        return false;
+    }
+ 
+     
+ }
+ 
 
 ?>

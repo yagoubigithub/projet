@@ -1,7 +1,7 @@
 <?php
 
 require_once('../model/userAPI.php');
-
+session_start();
    
     
     if(!empty($_POST['password'])  && !empty($_POST['first_name']) && !empty($_POST['last_name'])
@@ -36,7 +36,7 @@ if($_FILES['image']['error'] === 0){
                 $uniqueId = uniqid('',true);
                 $file_name_new = $uniqueId . '.' . $file_ext;
                 if(move_uploaded_file($file_tmp , '../../images/' . $file_name_new)){
-                    echo 'image upload';
+                   
 
                 }else{
                     echo 'error';
@@ -61,13 +61,16 @@ $is_user  = add_user($firstname,$lastname,$email,$password,$file_name_new);
 if($is_user){
     //confirmer email
     $subject = "Confirmer Email";
-    $random = rand(9999,99999)
-  
-    $txt = "<h1>code de confirmation :br><mark>"  .$random  . "</mark>";
-    mail($email,$subject,$txt);
-    echo $is_user;
+    $random = rand(9999,99999);
+    $txt = "<h1>code de confirmation :<br><mark>"  .$random  . "</mark></h1>";
+    $headers = "From: webmaster@example.com" . "\r\n" .
+"CC: somebodyelse@example.com";
+    //mail($email,$subject,$txt,$headers);
+    $_SESSION['random'] = $random;
+   
+    echo json_encode(array("email"=>$email, "password"=>$password,"random" => $random));
 }else{
-    echo 'null';
+    echo $is_user;
 }
 
 

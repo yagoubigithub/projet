@@ -7,7 +7,11 @@
     font-size: 12px;
 }
 .comment-container{
-    background: #f2f2f2;
+    background: tomato;
+    color : white;
+    font-weight: 500;
+    border-radius: 100%;
+    padding :4px;
     text-overflow: ellipsis;
 }
 .comment-name-and-comment-container{
