@@ -85,7 +85,7 @@ function postAPI_select_posts($number_of_groupe){
     
     }catch(Exepetion $ex){
         error_log($ex->getMessage());
-        return false;
+        return $ex->getMessage();
     }
    
 }

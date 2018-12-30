@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="./front_page/front_page.css">
     <title>Document</title>
   </head>
-  <body>
-    <header class="bg-warning">
+  <body >
+    <header class="navbar-dark bg-dark">
       <div class="container">
         <div class="row">
-          <div class="col-sm col-md-6"><h1>Logo</h1></div>
-          <div class="col-sm col-md-6">
+          <div class="col-sm col-md-6"><h1 class="text-white">Logo</h1></div>
+          <div class="col-sm col-md-6" style="padding-top : 10px;">
             <div class="form-log-in">
               <form class="form-inline">
                   
@@ -27,41 +27,38 @@
         </div>
       </div>
     </header>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-           
-<img src="https://picsum.photos/200">
-
-        </div>
-        <div class="col-sm-6">
-                <form id="Inscription_form"  enctype="multipart/form-data">
-                    <h2>Inscription  </h2>
+<div class="container-fluid bg">
+    <div class="row" style="background-color : rgba(0,0,0,0.6);min-height: 853px;overflow-y: auto;">
+       
+        <div class="offset-sm-3 col-sm-6">
+  
+                <form id="Inscription_form"   enctype="multipart/form-data">
+                    <h2 class="text-white">Inscription  </h2>
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="first_name"> Nom*</label>
+                            <label class="text-white" for="first_name"> Nom*</label>
                             <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nom" required>
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="last_name">Prenom*</label>
+                            <label class="text-white" for="last_name">Prenom*</label>
                             <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Prenom" required>
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="email">Email*</label>
+                          <label class="text-white" for="email">Email*</label>
                           <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                          <label for="password">Mot de passe*</label>
+                          <label class="text-white" for="password">Mot de passe*</label>
                           <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
                         </div>
                         <div class="form-group">
-                            <label for="co_password">Confirmer Mot de passe*</label>
+                            <label class="text-white" for="co_password">Confirmer Mot de passe*</label>
                             <input type="password" class="form-control" name="co_password" id="co_password" placeholder="Mot de passe" required>
                           </div>
 
                           <div class="form-group">
-                              <label for="image">Image profile</label>
+                              <label class="text-white" for="image">Image profile</label>
                               <input type="file" name="image" class="form-control" id="image" name="image" placeholder="image profile" >
                             </div>
                         

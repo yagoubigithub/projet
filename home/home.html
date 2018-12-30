@@ -114,7 +114,7 @@
                      
                       <button class="btn btn-outline-secondary text-white" class="dropdown">
                           <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  onclick="clearNotification()">
-                             <img src="./icons/baseline-notifications-24px.svg"/> <span class="badge badge-danger" style="transform :translate(-8px,-6px)" id="badge_notification"></span>
+                             <img src="./icons_/baseline-notifications-24px.svg"/> <span class="badge badge-danger" style="transform :translate(-8px,-6px)" id="badge_notification"></span>
                           </a>
                           <div class="dropdown-menu" id="container_notification" aria-labelledby="dropdownMenuLink">
                           </div>
@@ -136,15 +136,16 @@
                                   </div>
                                   <form id="upload_file_form">
                                     <button type="button" class="btn btn-primary" id="btn_add_file">
-                                      <img src="./icons/baseline-insert_drive_file-24px.svg" /><span id="label_add_file">Add file</span>
+                                      <img src="./icons_/baseline-insert_drive_file-24px.svg" /><span id="label_add_file">Add file</span>
                                     </button>
                                       <input  style="display :none" name="upload_file"   type="file" id="input_add_file" />
-                                  
+                                      <progress class="pure-material-progress-circular" style="float : left;opacity :0;" id="add_file_progress"></progress>
                                   </form>
                                     
                                   
                                   <br>
                                   <div style="display :flex;justify-content: flex-end">
+                                    
                                     <button class="btn btn-primary" id="add_text_post_btn">Post</button>
 </div>
                              

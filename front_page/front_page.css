@@ -2,3 +2,36 @@ section{
     height: 700px;
     width: 700px;
 }
+.bg-dark{
+    background-color: #36465d !important;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+
+}
+body, html {
+    height: 100%;
+  }
+
+.bg { 
+    /* The image used */
+    background-image: url("../images/pexels-photo-374820.jpeg");
+  
+    /* Full height */
+    height: 100%; 
+  overflow: hidden;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #Inscription_form{
+      margin-top: 5px;
+      border : 1px solid white;
+      padding : 5px;
+  }
+
+  @media only screen and (min-width: 600px) and (max-width: 800px) {
+    .bg{
+        overflow: auto;
+
+    }
+  }

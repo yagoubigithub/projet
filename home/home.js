@@ -30,7 +30,7 @@ $(document).ready(function(){
         user = JSON.parse(userSession);
         userId  = user.id;
         isAdmin =user.isadmin;
-        if(!isAdmin){
+        if(isAdmin === 'no'){
             $("#list_Student_btn").css({display : 'none'});
         }
         
@@ -48,24 +48,22 @@ $(document).ready(function(){
  $.get("./php/controller/SelectPosts.php",{number_of_groupe: number_of_groupe},
  function(posts){
      //show posts
+    
      const obj = JSON.parse(posts);
-     if(number_of_groupe === 1){
+     
+     if(obj !== null){
+        if(number_of_groupe === 1){
          compare_date  = obj[0].date_post;
         setInterval(function(){
             showNotification(compare_date);
-        },5000)
-       
-    
-
+        },5000);
     }
-   obj.forEach(post => {
-    document.getElementById('post_container').innerHTML +=returnPost(post,user);
     
-     
-   });
-   
-
-
+   obj.forEach(post => {
+       
+    document.getElementById('post_container').innerHTML +=returnPost(post,user);
+   }); 
+     }
  });
 
 
@@ -76,8 +74,8 @@ $(document).ready(function(){
     function(posts){
         //show posts
         const obj = JSON.parse(posts);
-        
-        if(obj[0].id_post === "5"){
+        if(obj !== null){
+              if(obj[0].id_post === "5"){
             
             $("#more_comment_btn").css("display" ,"none");
             obj.forEach(post => {
@@ -90,6 +88,9 @@ $(document).ready(function(){
                 document.getElementById('post_container').innerHTML +=returnPost(post);
                });
         }
+        }
+        
+      
       
    
    
@@ -137,7 +138,7 @@ $(document).ready(function(){
                 $("#upload_file_form").submit();
             }
             else{
-                if(editor.getText().trim() !== ""){
+                if(editor.getText().trim() !== "" || editor.getLength() > 1){
                     const post_text  =JSON.stringify(editor.getContents());
                     const d = new Date();
                     $.post("./php/controller/addPost.php",{
@@ -178,7 +179,7 @@ $(document).ready(function(){
         cache: false,
         processData:false,
         beforeSend: function() {
-            console.log("before send");
+            $("#add_file_progress").css({opacity : 1});
           },complete: function() {
               //complete
              /*  $("#upload_file_form").trigger("reset");

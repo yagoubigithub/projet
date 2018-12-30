@@ -23,7 +23,7 @@ function returnStudentItem (obj){
     //image profile
     ' <img class="rounded-circle" width="50" height="50" ' + 
 
-    'src="../images/'+obj.image+'" />' + 
+    'src="./images/'+obj.image+'" />' + 
 
 
 

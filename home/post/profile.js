@@ -1,6 +1,6 @@
 function showProfile() {
   const profile =
-    '<form class="card" id="change_profile_form" enctype="multipart/form-data"> <div >' +
+    '<br><form class="card" id="change_profile_form" enctype="multipart/form-data"><br><br> <div >' +
     ' <div class="form-group col-md " >' +
     ' <label for="first_name_input"><h4>First Name</h4></label>' +
     '<input type="text" class="form-control" id="first_name_input" name="first_name_input" value="' +
