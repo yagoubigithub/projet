@@ -290,15 +290,12 @@ function desuprimer_user_by_id($id_user ){
          $query = sprintf("UPDATE users SET suprimed='no' WHERE id=%d", $n_id_user);
  
  
- $query_result = mysqli_query($handle, $query);
- 
-     if (!$query_result)
+         $query_result = mysqli_query($handle, $query);
+        $debloced =  deblocker_user_by_id($n_id_user);
+     if (!$query_result && !$debloced)
          return false;
  return true;
-    
  
- 
-    
     }catch(Exepetion $ex){
      error_log($ex->getMessage());
         return false;

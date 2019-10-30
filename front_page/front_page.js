@@ -34,7 +34,15 @@ function login(userData){
 
 $(document).ready(function(){
   $.ajaxSetup({cache:false});
- 
+  $( "#login_password_input" ).keypress(function( event ) {
+    if ( event.which == 13 ) {
+      connexion();
+    }});
+
+    $( "#login_email_input" ).keypress(function( event ) {
+      if ( event.which == 13 ) {
+        connexion();
+      }});
   $("#Inscription_form").on("submit", function(e) {
     e.preventDefault();
     if($("#co_password").val() !== $("#password").val() && !/^[a-zA-Z0-9]{4,}$/gi.test($("#password").val()) ){

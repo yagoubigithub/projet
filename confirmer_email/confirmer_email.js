@@ -13,7 +13,7 @@ $(document).ready(function(){
                $.get("../php/controller/desuprimerUser.php",function(data){
                 if(data){
                     
-                    window.location = "../home/home.html";
+                    window.location="../.";
                 }else{
                     alert("code pas correct");
                 }

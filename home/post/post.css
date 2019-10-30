@@ -24,9 +24,20 @@ margin-bottom: 20px;
   .post_header .post-dropdown {
     display: flex;
     align-items :flex-start;
-    margin: 0  17px 0 auto;
+    margin: 0  10px 0 auto;
    
   }
+  .post-dropdown .dropdown-item{
+    background-color: #dc3545 !important;
+    color:white !important;
+    margin-bottom: 2px;
+
+  }
+  .post-dropdown .dropdown-item:hover{
+    background-color: #dc4556 !important;
+  }
+
+
   .post_header .post-dropdown button {
    
     font-size: 50px;
@@ -93,7 +104,7 @@ margin-bottom: 20px;
 }
 
 .comment-container {
-  max-width:50%;
+  max-width:70%;
   
   width :auto;
   background: #007bff;

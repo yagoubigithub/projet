@@ -16,9 +16,7 @@ function returnPost(obj ){
     '</div>' ;
    if(user.isadmin  === 'yes'){
        post +=  //dropdown post
-       '<div class="post-dropdown">' + 
-   
-       '<div class="dropdown">' + 
+       '<div class="post-dropdown dropleft">' + 
    
        '<button  type="button" id="drop' + obj.id_post + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + 
        '... </button>'+
@@ -33,15 +31,7 @@ function returnPost(obj ){
     post +=' <a class="dropdown-item" href="#" onclick="suprimerPost(event,'+ obj.id_post + ')">Suprimer Post</a>' +
    
        // fin dropdown-menu
-       '</div>' + 
-   
-   
-       //fin dropdwon
-       '</div>' + 
-       
-       
-   
-   
+       '</div>' +    
        
        // fin drop down
        '</div>' ;
@@ -50,8 +40,12 @@ function returnPost(obj ){
     
     // fin header
    post+= '</div>' ;
+   
    if(obj.type_post === "text"){
-       const content = JSON.parse( obj.content_post);
+
+    
+    
+       const content =  JSON.parse(obj.content_post);
        
         // content_post of the post
     post += '<div class="post-inner">' +
@@ -59,7 +53,7 @@ function returnPost(obj ){
      quillGetHTML(content)  ;
 }else if(obj.type_post ==="image"){
  /// post image
- const content = JSON.parse( obj.content_post);
+ const content =  JSON.parse(obj.content_post);
  post += '<div class="post-inner">' +
     
  quillGetHTML(content)  + 
@@ -69,7 +63,7 @@ function returnPost(obj ){
 }
 else if(obj.type_post === "file"){
   //post file
-  const content = JSON.parse( obj.content_post);
+  const content =  JSON.parse(obj.content_post);
   post += '<div class="post-inner">' +
     
   quillGetHTML(content)  + 
@@ -123,7 +117,6 @@ else if(obj.type_post === "file"){
 
  //fin comments section
     '</div>' +
-
 
      //fin post
      '</div>' +
@@ -243,11 +236,14 @@ function showNotification(compare_date){
                 $("#badge_notification").html(obj.length - number_notification);
                 document.getElementById("container_notification").innerHTML ="";
                 obj.forEach(post => {
-                    const item = '<div   onclick="showPostContent('+post.id_post+')"'
+                    if(post.id_post !== user.id){
+                         const item = '<div   onclick="showPostContent('+post.id_post+')"'
                     +' class="card dropdown-item" style=" cursor: pointer;display :flex;flex-direction :row;justify-content: center;">' + 
                     '<img class="rounded-circle"  width="40" height="40" src="../images/'+post.image+'">'+
                     '<h6>'  +post.firstname + '  ' + post.lastname +   ' posted at <small>'+post.date_post+'</small> </h6>' + 
                      ' </div>';
+                    }
+                   
                 document.getElementById("container_notification").innerHTML += item;
                 });
             }

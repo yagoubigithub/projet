@@ -12,26 +12,24 @@ body, html {
   }
 
 .bg { 
-    /* The image used */
-    background-image: url("../images/pexels-photo-374820.jpeg");
-  
     /* Full height */
     height: 100%; 
   overflow: hidden;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+   
   }
   #Inscription_form{
       margin-top: 5px;
-      border : 1px solid white;
-      padding : 5px;
+     box-shadow: 0 0 4px gray;
+      padding : 45px;
+  }
+  #img-front{
+      position: fixed;
+      top :0;
+      z-index: -5;
+      height: 100%;
+  }
+  .marginTop50{
+      margin-top: 50px;
   }
 
-  @media only screen and (min-width: 600px) and (max-width: 800px) {
-    .bg{
-        overflow: auto;
-
-    }
-  }
+ 

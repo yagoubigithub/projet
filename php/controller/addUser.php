@@ -65,7 +65,7 @@ if($is_user){
     $txt = "<h1>code de confirmation :<br><mark>"  .$random  . "</mark></h1>";
     $headers = "From: webmaster@example.com" . "\r\n" .
 "CC: somebodyelse@example.com";
-    //mail($email,$subject,$txt,$headers);
+    mail($email,$subject,$txt,$headers);
     $_SESSION['random'] = $random;
    
     echo json_encode(array("email"=>$email, "password"=>$password,"random" => $random));

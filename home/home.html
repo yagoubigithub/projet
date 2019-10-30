@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./list_student/list_student.css">
     <link rel="stylesheet" href="./home/home.css">
     <link rel="stylesheet" href="./home/post/post.css">
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="./css/quill.snow.css" rel="stylesheet">
 
     <title>Document</title>
 </head>
@@ -109,27 +109,28 @@
                     <div class="col-sm col-md-8 "  style="display:flex;align-items: center;justify-content:flex-end;flex-wrap: wrap;">
                       <button type="button" id="show_profile_btn" onclick="showProfile()" class="btn btn-outline-secondary text-white">Profile</button>
                       <button type="button" onclick="showListStudents()" id="list_Student_btn" class="btn btn-outline-secondary text-white">List des Etudiant</button>
-                      <button type="button" onclick="location.reload()" class="btn btn-outline-secondary text-white">Accuil</button>
+                      <button type="button" onclick="location.reload()" class="btn btn-outline-secondary text-white">Acceuil</button>
                      
                      
-                      <button class="btn btn-outline-secondary text-white" class="dropdown">
-                          <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  onclick="clearNotification()">
+                      <div  class="dropdown">
+                          <button  class="btn btn-outline-secondary text-white" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  onclick="clearNotification()">
                              <img src="./icons_/baseline-notifications-24px.svg"/> <span class="badge badge-danger" style="transform :translate(-8px,-6px)" id="badge_notification"></span>
-                          </a>
+                          </button>
                           <div class="dropdown-menu" id="container_notification" aria-labelledby="dropdownMenuLink">
                           </div>
-                        </button>
-                        <button type="button" id="logout_btn" class="btn btn-outline-secondary text-white">LogOut</button>
+                        </div>
+                        <button type="button" id="logout_btn" class="btn btn-outline-secondary text-white">Déconnexion</button>
                   </div>
                 </div>
               </header>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-sm-3 d-none d-sm-block">
+          <img src="./images/pexels-photo-197293.jpeg"  class="img-pub" />
 
         </div>
-        <div class="col-sm-8" >
+        <div class="col-sm-6" >
                 <div id="create-post">    
                                   <div style="min-height :130px;margin-bottom: 5px;" class="editor">
                                     
@@ -138,6 +139,7 @@
                                     <button type="button" class="btn btn-primary" id="btn_add_file">
                                       <img src="./icons_/baseline-insert_drive_file-24px.svg" /><span id="label_add_file">Add file</span>
                                     </button>
+                                    <span id="file_type">.txt .pdf .doc</span>
                                       <input  style="display :none" name="upload_file"   type="file" id="input_add_file" />
                                       <progress class="pure-material-progress-circular" style="float : left;opacity :0;" id="add_file_progress"></progress>
                                   </form>
@@ -162,7 +164,7 @@
             </div>
             <div class="col-sm-3 d-none d-sm-block">
               <div class="card  mt-3 " >
-                <img src="#"class="card-img-top" id="profile_card_image" alt="image profile" />
+                <img src="#"class="card-img-top" height="200" id="profile_card_image" alt="image profile" />
                 <div class="card-body">
                   
                   <h5 id="profile_card_firstname_lastname" class="card-title"></h5>
@@ -173,13 +175,14 @@
            
 
     </div>
+   
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/popper.min.js" ></script>
+<script src="./js/bootstrap.min.js" ></script>
 <script src="./list_student/list_student.js"></script>
  <!-- Include the Quill library -->
- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+ <script src="./js//quill.js"></script>
 
  <!-- Initialize Quill editor -->
  <script>

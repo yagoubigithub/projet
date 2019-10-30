@@ -74,17 +74,19 @@ $(document).ready(function(){
     function(posts){
         //show posts
         const obj = JSON.parse(posts);
+       
         if(obj !== null){
               if(obj[0].id_post === "5"){
             
             $("#more_comment_btn").css("display" ,"none");
             obj.forEach(post => {
+                
                 if(post.id_post !== "5" )
                 document.getElementById('post_container').innerHTML +=returnPost(post);
                });
         }else{
             obj.forEach(post => {
-
+               
                 document.getElementById('post_container').innerHTML +=returnPost(post);
                });
         }
@@ -100,7 +102,7 @@ $(document).ready(function(){
  $("#logout_btn").click(()=>{
      //logout
      $.get("./php/controller/logout.php",(data)=>{
-         console.log(data);
+         
          if(data){
             location.reload();
          }
@@ -134,23 +136,25 @@ $(document).ready(function(){
             //$("#upload_file_form").submit();
             if(document.getElementById("input_add_file").files.length !== 0){
                 //post file 
-               
                 $("#upload_file_form").submit();
             }
             else{
                 if(editor.getText().trim() !== "" || editor.getLength() > 1){
-                    const post_text  =JSON.stringify(editor.getContents());
+                    $("#add_file_progress").css({opacity : 1});
+                    const post_text = JSON.stringify(editor.getContents());
                     const d = new Date();
                     $.post("./php/controller/addPost.php",{
                         type :  "text",
-                        content :  post_text,
+                        content :  post_text ,
                         id_user : user.id,
                         date :d
      
                     },function(data){
                         //confirme post added
-                    console.log(data);                       
-                        location.reload();
+                              if(data){
+                                location.reload();
+                              }           
+                        
                     });
                 } 
             }

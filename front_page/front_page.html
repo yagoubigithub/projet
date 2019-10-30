@@ -28,37 +28,36 @@
       </div>
     </header>
 <div class="container-fluid bg">
-    <div class="row" style="background-color : rgba(0,0,0,0.6);min-height: 853px;overflow-y: auto;">
+    <div class="row">
        
-        <div class="offset-sm-3 col-sm-6">
+        <div class="col-sm-6 marginTop50">
   
                 <form id="Inscription_form"   enctype="multipart/form-data">
-                    <h2 class="text-white">Inscription  </h2>
+                    <h2 class="display-4">Inscription  </h2>
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label class="text-white" for="first_name"> Nom*</label>
-                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nom" required>
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nom*" required>
                           </div>
                           <div class="form-group col-md-6">
-                            <label class="text-white" for="last_name">Prenom*</label>
-                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Prenom" required>
+                          
+                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Prenom*" required>
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="text-white" for="email">Email*</label>
-                          <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                          
+                          <input type="text" class="form-control" id="email" name="email" placeholder="Email*" required>
                         </div>
                         <div class="form-group">
-                          <label class="text-white" for="password">Mot de passe*</label>
-                          <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
+                          
+                          <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe*" required>
                         </div>
                         <div class="form-group">
-                            <label class="text-white" for="co_password">Confirmer Mot de passe*</label>
-                            <input type="password" class="form-control" name="co_password" id="co_password" placeholder="Mot de passe" required>
+                           
+                            <input type="password" class="form-control" name="co_password" id="co_password" placeholder="Confirmer Mot de passe*" required>
                           </div>
 
                           <div class="form-group">
-                              <label class="text-white" for="image">Image profile</label>
+                              
                               <input type="file" name="image" class="form-control" id="image" name="image" placeholder="image profile" >
                             </div>
                         
@@ -66,11 +65,15 @@
                         <button type="submit" id="Inscription_btn" class="btn btn-success">Inscription</button>
                       </form>   
             </div>
+            <div class="col-sm-6 hidden-sm-down">
+
+              <img id="img-front" src="./images/cellular-education-classroom-159844.jpeg" />
+            </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/popper.min.js" ></script>
+<script src="./js/bootstrap.min.js" ></script>
 <script src="./front_page/front_page.js"></script>
   </body>
 </html>
